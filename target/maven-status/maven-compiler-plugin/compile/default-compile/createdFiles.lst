@@ -1,0 +1,7 @@
+com\dao\PersonaDaoImplJDBC.class
+com\Modelos\Persona.class
+com\idao\IPersonaDao.class
+com\pruebas\Ejemplo.class
+com\Data\Data.class
+com\Data\Conexion.class
+com\dao\PersonaDaoImplLocal.class
