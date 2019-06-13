@@ -8,8 +8,8 @@ Proyecto con Java EE aplicando los patrones de diseño de DAO y MVC con las tecn
 -El archivo de base de datos se encuentra en el proyectos. "BD.sql".
 Ejecutar dicho script.
 
--Configurar las credenciales para la base de datos en el parque "com.Data" la clase "Conexion.java"
+-Configurar las credenciales para la base de datos en el paquete "com.Data" la clase "Conexion.java"
 
--Sincronizar con las dependencias de MAVEN  el proyecto
+-COmpilar y Sincronizar con las dependencias de MAVEN  el proyecto
 
--Por ultimo compilar y ejecutar.
+-Por ultimo compilar todo el proyecto y ejecutar.
