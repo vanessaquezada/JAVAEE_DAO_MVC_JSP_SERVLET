@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container ">
-            <h1 class="text-center mb-2"><span class="fas fa-user"></span> Editar Registro</h1>
+            <h1 class="text-center mb-2"><span class="fas fa-file-alt"></span> Editar Registro</h1>
             <hr>
             <form action="/JAVAEE_DAO_MVC_JSP_SERVLET/Persona?action=editar" method="Post">
                  <div class="form-group ">
