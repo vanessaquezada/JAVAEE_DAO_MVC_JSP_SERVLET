@@ -1,7 +1,8 @@
 com\dao\PersonaDaoImplJDBC.class
 com\Modelos\Persona.class
 com\idao\IPersonaDao.class
-com\pruebas\Ejemplo.class
+com\Controladores\PersonaController.class
 com\Data\Data.class
 com\Data\Conexion.class
+com\Controladores\Prueba.class
 com\dao\PersonaDaoImplLocal.class

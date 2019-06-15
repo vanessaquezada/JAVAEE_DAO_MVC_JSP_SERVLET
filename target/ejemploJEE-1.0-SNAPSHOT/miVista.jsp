@@ -21,11 +21,8 @@
     </head>
     <body>
        
-        <div class="container">
-            
-            
-            <div class="row">
-                
+        <div class="container">         
+            <div class="row">               
                 <div class="col-md-6">
                      <h1 class="text-center">Datos del registro</h1>
         
@@ -39,8 +36,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
                         </tbody>
                     </table>
         
@@ -57,6 +52,7 @@
                 </div> 
             </div>
             
+            <h1>Valor recibido: ${variable}</h1>
         </div>
         
         

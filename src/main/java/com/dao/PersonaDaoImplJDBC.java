@@ -90,17 +90,17 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     @Override
     public Boolean actualizarCliente(Persona persona) {
         boolean rowActualizar = false;
-        String sql = "UPDATE personas SET id=?,nombre=?,apellidos=?,edad=?, direccion=? WHERE id=?";
+        String sql = "UPDATE personas SET nombre=?,apellidos=?,edad=?, direccion=? WHERE id=?";
         try {
             con.conectar();
 
             connection = con.getJdbcConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, persona.getId());
-            statement.setString(2, persona.getNombre());
-            statement.setString(3, persona.getApellidos());
-            statement.setInt(4, persona.getEdad());
-            statement.setString(5, persona.getDireccion());
+          statement.setInt(5, persona.getId());
+            statement.setString(1, persona.getNombre());
+            statement.setString(2, persona.getApellidos());
+            statement.setInt(3, persona.getEdad());
+            statement.setString(4, persona.getDireccion());
 
             rowActualizar = statement.executeUpdate() > 0;
             statement.close();
@@ -136,28 +136,28 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
 
     @Override
     public Boolean insertarCliente(Persona persona) {
-        String sql = "INSERT INTO personas (id,nombre,apellidos,edad,direccion) VALUES (?, ?, ?,?,?,?)";
+        String sql = "INSERT INTO personas(nombre,apellidos,edad,direccion) VALUES ( ?,?,?,?)";
         System.out.println(persona.getNombre());
         PreparedStatement statement;
         try {
             con.conectar();
-
             connection = con.getJdbcConnection();
             statement = connection.prepareStatement(sql);
 
-            statement.setInt(1, persona.getId());
-            statement.setString(2, persona.getNombre());
-            statement.setString(3, persona.getApellidos());
-            statement.setInt(4, persona.getEdad());
-            statement.setString(5, persona.getDireccion());
+           // statement.setInt(1, persona.getId());
+            statement.setString(1, persona.getNombre());
+            statement.setString(2, persona.getApellidos());
+            statement.setInt(3, persona.getEdad());
+            statement.setString(4, persona.getDireccion());
 
             boolean rowInserted = statement.executeUpdate() > 0;
             statement.close();
             con.desconectar();
-
+            System.out.println("Guardado");    
             return rowInserted;
         } catch (SQLException ex) {
             Logger.getLogger(PersonaDaoImplJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No Guardado");   
             return false;
         }
     }
