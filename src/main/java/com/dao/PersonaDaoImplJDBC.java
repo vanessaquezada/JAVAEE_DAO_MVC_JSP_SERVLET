@@ -7,6 +7,7 @@ package com.dao;
 
 import com.Data.Conexion;
 import com.Modelos.Persona;
+import com.Modelos.Personas;
 import com.idao.IPersonaDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,8 +33,8 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     }
 
     @Override
-    public List<Persona> obtenerClientes() {
-        List<Persona> lista = new ArrayList<Persona>();
+    public List<Personas> obtenerClientes() {
+        List<Personas> lista = new ArrayList<Personas>();
         String sql = "SELECT * FROM personas";
 
         try {
@@ -49,7 +50,7 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
                 String apellidos = resulSet.getString("apellidoS");
                 Integer edad = resulSet.getInt("edad");
                 String direccion = resulSet.getString("direccion");
-                Persona p = new Persona(id, nombre, apellidos, edad, direccion);
+                Personas p = new Personas(id, nombre, apellidos, edad, direccion);
                 lista.add(p);
             }
             con.desconectar();
@@ -62,8 +63,8 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     }
 
     @Override
-    public Persona obtenerCliente(int id) {
-        Persona p = null;
+    public Personas obtenerCliente(int id) {
+        Personas p = null;
         String sql = "SELECT * FROM personas WHERE id= ? ";
         try {
             con.conectar();
@@ -74,7 +75,7 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
 
             ResultSet res = statement.executeQuery();
             if (res.next()) {
-                p = new Persona(res.getInt("id"), res.getString("nombre"), res.getString("apellidos"),
+                p = new Personas(res.getInt("id"), res.getString("nombre"), res.getString("apellidos"),
                         res.getInt("edad"), res.getString("direccion"));
             }
             res.close();
@@ -88,7 +89,7 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     }
 
     @Override
-    public Boolean actualizarCliente(Persona persona) {
+    public Boolean actualizarCliente(Personas persona) {
         boolean rowActualizar = false;
         String sql = "UPDATE personas SET nombre=?,apellidos=?,edad=?, direccion=? WHERE id=?";
         try {
@@ -113,7 +114,7 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     }
 
     @Override
-    public Boolean eliminarCliente(Persona persona) {
+    public Boolean eliminarCliente(Personas persona) {
         boolean rowEliminar = false;
 		String sql = "DELETE FROM personas WHERE ID=?";
         try {
@@ -135,7 +136,7 @@ public class PersonaDaoImplJDBC implements IPersonaDao {
     }
 
     @Override
-    public Boolean insertarCliente(Persona persona) {
+    public Boolean insertarCliente(Personas persona) {
         String sql = "INSERT INTO personas(nombre,apellidos,edad,direccion) VALUES ( ?,?,?,?)";
         System.out.println(persona.getNombre());
         PreparedStatement statement;

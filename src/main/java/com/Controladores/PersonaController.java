@@ -1,6 +1,8 @@
 package com.Controladores;
 
 import com.Modelos.Persona;
+import com.Modelos.Personas;
+import com.dao.PersonaDaoImpHibernate;
 import com.dao.PersonaDaoImplJDBC;
 import com.idao.IPersonaDao;
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class PersonaController extends HttpServlet {
 
         try {
 
-            personaDao = new PersonaDaoImplJDBC();
+            personaDao = new PersonaDaoImpHibernate();
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -51,13 +53,13 @@ public class PersonaController extends HttpServlet {
     //------------------------------------------------------------------------------------------------
     private void index(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/persona/ver.jsp");
-        List<Persona> lista = personaDao.obtenerClientes();
+        List<Personas> lista = personaDao.obtenerClientes();
         request.setAttribute("lista", lista);
         dispatcher.forward(request, response);
     }
 
     private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        Persona p = new Persona(0, request.getParameter("nombre"), request.getParameter("apellidos"), Integer.parseInt(request.getParameter("edad")), request.getParameter("direccion"));
+        Personas p = new Personas(0, request.getParameter("nombre"), request.getParameter("apellidos"), Integer.parseInt(request.getParameter("edad")), request.getParameter("direccion"));
         personaDao.insertarCliente(p);
 
         index(request, response);
@@ -70,33 +72,33 @@ public class PersonaController extends HttpServlet {
 
     private void mostrar(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/persona/ver.jsp");
-        List<Persona> lista = personaDao.obtenerClientes();
+        List<Personas> lista = personaDao.obtenerClientes();
         request.setAttribute("lista", lista);
         dispatcher.forward(request, response);
     }
 
     private void showEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        Persona p=personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
+        Personas p=personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("item", p);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/persona/editar.jsp");
         dispatcher.forward(request, response);
     }
   private void showEliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        Persona p=personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
+        Personas p=personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("item", p);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/persona/eliminar.jsp");
         dispatcher.forward(request, response);
     }
 
     private void editar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        Persona p = new Persona(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("apellidos"), Integer.parseInt(request.getParameter("edad")), request.getParameter("direccion"));
+        Personas p = new Personas(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("apellidos"), Integer.parseInt(request.getParameter("edad")), request.getParameter("direccion"));
         personaDao.actualizarCliente(p);
 
         index(request, response);
     }
 
     private void eliminar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        Persona p = personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
+        Personas p = personaDao.obtenerCliente(Integer.parseInt(request.getParameter("id")));
         personaDao.eliminarCliente(p);
         index(request, response);
 

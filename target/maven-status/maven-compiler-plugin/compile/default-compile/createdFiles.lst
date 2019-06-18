@@ -1,8 +1,11 @@
-com\dao\PersonaDaoImplJDBC.class
+com\Data\HibernateUtil.class
 com\Modelos\Persona.class
 com\idao\IPersonaDao.class
 com\Controladores\PersonaController.class
 com\Data\Data.class
 com\Data\Conexion.class
-com\Controladores\Prueba.class
 com\dao\PersonaDaoImplLocal.class
+com\dao\PersonaDaoImplJDBC.class
+com\Controladores\Prueba.class
+com\dao\PersonaDaoImpHibernate.class
+com\Modelos\Personas.class

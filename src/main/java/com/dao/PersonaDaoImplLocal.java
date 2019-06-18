@@ -3,6 +3,7 @@ package com.dao;
 
 import com.Data.Data;
 import com.Modelos.Persona;
+import com.Modelos.Personas;
 import com.idao.IPersonaDao;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class PersonaDaoImplLocal implements IPersonaDao{    
     
     public PersonaDaoImplLocal() {
-       Persona p1=new Persona();
+       Personas p1=new Personas();
        p1.setNombre("Juan");
        p1.setApellidos("Perez");
        p1.setEdad(19);
@@ -20,17 +21,17 @@ public class PersonaDaoImplLocal implements IPersonaDao{
 
     
     @Override
-    public List<Persona> obtenerClientes() {
+    public List<Personas> obtenerClientes() {
         return Data.data;
     }
 
     @Override
-    public Persona obtenerCliente(int id) {
+    public Personas obtenerCliente(int id) {
        return Data.data.get(id);
     }
 
     @Override
-    public Boolean actualizarCliente(Persona p) {
+    public Boolean actualizarCliente(Personas p) {
         Data.data.get(p.getId()).setNombre(p.getNombre());
 	Data.data.get(p.getId()).setApellidos(p.getApellidos());
         Data.data.get(p.getId()).setEdad(p.getEdad());
@@ -40,14 +41,14 @@ public class PersonaDaoImplLocal implements IPersonaDao{
     }
 
     @Override
-    public Boolean eliminarCliente(Persona p) {
+    public Boolean eliminarCliente(Personas p) {
         Data.data.remove(p.getId());
 	System.out.println("Persona con id: "+p.getId()+" elimnado satisfactoriamente");
         return true;
     }
 
     @Override
-    public Boolean insertarCliente(Persona persona) {
+    public Boolean insertarCliente(Personas persona) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
