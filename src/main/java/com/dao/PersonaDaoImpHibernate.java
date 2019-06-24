@@ -25,9 +25,7 @@ public class PersonaDaoImpHibernate implements IPersonaDao {
     SessionFactory sessionFactory;
 
     public PersonaDaoImpHibernate() {
-
         sessionFactory = HibernateUtil.getSessionFactory();
-
     }
 
     @Override
@@ -39,7 +37,7 @@ public class PersonaDaoImpHibernate implements IPersonaDao {
             // Getting Transaction Object From Session Object
             session.beginTransaction();
 
-            lista = session.createQuery("FROM Personas").list();
+            lista = session.createNamedQuery("Personas.findAll").list();
         } catch (Exception sqlException) {
             if (null != session.getTransaction()) {
                 //  logger.info("\n.......Transaction Is Being Rolled Back.......\n");

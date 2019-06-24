@@ -5,26 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Administrar Personas</title>
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+       <%@include file="../componentes/asset.jspf" %>
     </head>
     <body>
 
@@ -34,7 +20,7 @@
 
             <a href="Persona?action=nuevo"  class="btn btn-primary mt-2"><span class="fas fa-plus"></span> Nuevo</a> <br><br>
             <h1 class="text-center mt-2"><span class="fas fa-table"></span> Lista  de Personas</h1>
-            <table id="tdatos"  class="table">
+            <table id="tdatos"  class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th> ID</th>
@@ -46,6 +32,7 @@
                         <th>ACCIONES</th>
                     </tr> 
                 </thead>
+                
                 <tbody>
                     <c:forEach var="item" items="${lista}">
                         <tr>
@@ -62,7 +49,6 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-
             </table>
         </div>
 

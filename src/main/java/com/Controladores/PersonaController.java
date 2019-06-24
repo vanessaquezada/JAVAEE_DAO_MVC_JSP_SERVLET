@@ -36,9 +36,7 @@ public class PersonaController extends HttpServlet {
     IPersonaDao personaDao;
 
     public void init() {
-
         try {
-
             personaDao = new PersonaDaoImpHibernate();
         } catch (Exception e) {
             // TODO: handle exception
